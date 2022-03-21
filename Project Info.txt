@@ -1,0 +1,23 @@
+Team:           Filippo Cozzi
+Date:           04-01-2021
+Language:       Java
+
+
+Project Type:   Pattern Classification
+Project Size:   1 Perceptron
+Method:         Sigmoid & Step Functions
+Net. Workflow:  Training -> Testing (per iter.)
+Efficiency:     Great
+
+
+Dataset    Learning Rate    Iterations
+300        0.5              50
+300        0.1              2           < Best Results *
+100        0.5              7
+100        0.1              5
+10         0.5              8
+10         0.1              3
+
+
+* With a large dataset and a workflow of "Training -> Testing" for every iteration, 
+  after a couple of them the perceptron is already balanced.

@@ -1,0 +1,31 @@
+        frame.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                for (Point pt : pts) {                          // TRAINING SESSION
+                    float[] inputs = {pt.x, pt.y};
+                    float target = pt.label;
+                    perceptron.train(inputs, target);
+                }
+                for (Point pt : pts) {                          // TESTING SESSION
+                    float[] inputs = {pt.x, pt.y};
+        
+                    float output = perceptron.guess(inputs);
+                    
+                    Guesses.guesses.add(output);
+                    Guesses.targets.add(pt.label);
+                }
+                int line_guess_x1 = -300; int line_guess_y1 = perceptron.line_guess(line_guess_x1);
+                int line_guess_x2 = 300; int line_guess_y2 = perceptron.line_guess(line_guess_x2);
+                Guesses.line_guesses_x.add(line_guess_x1);
+                Guesses.line_guesses_x.add(line_guess_x2);
+                Guesses.line_guesses_y.add(line_guess_y1);
+                Guesses.line_guesses_y.add(line_guess_y2);
+
+                perceptron.iterations += 1;
+                //if (perceptron.iterations == 200 || perceptron.iterations == 400) { perceptron.lr /= 2.f; }
+
+                System.out.print(perceptron.iterations + "\t");
+                System.out.print(perceptron.lr + "\n");
+                frame.repaint(); // update the data visualization
+            }
+        });
